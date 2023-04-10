@@ -14,20 +14,26 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	char	*s3;
-	int		len1;
-	int		len2;
+	char	*newstr;
+	int		i;
+	int		k;
+	int		lens1;
+	int		lens2;
 
-	if (s1 == 0 || s2 == 0)
-		return (0);
-	len1 = ft_strlen(s1);
-	len2 = ft_strlen(s2);
-	s3 = (char *)malloc(sizeof(char) * (len1 + len2 + 1));
-	if (!s3)
-		return (0);
-	ft_strlcpy(s3, s1, len1 + 1);
-	ft_strlcat(s3, s2, (len1 + len2 + 1));
-	return (s3);
+	i = 0;
+	k = 0;
+	lens1 = ft_strlen(s1);
+	lens2 = ft_strlen(s2);
+	newstr = malloc(lens1 + lens2 + 1);
+	if (!newstr)
+		return (NULL);
+	while (s1[i])
+		newstr[k++] = s1[i++];
+	i = 0;
+	while (s2[i])
+		newstr[k++] = s2[i++];
+	newstr[k] = '\0';
+	return (newstr);
 }
 /*
 #include <stdio.h>

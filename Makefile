@@ -6,14 +6,17 @@
 #    By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/03 15:12:23 by lortega-          #+#    #+#              #
-#    Updated: 2023/04/04 16:13:00 by lortega-         ###   ########.fr        #
+#    Updated: 2023/04/07 12:35:43 by lortega-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 
 CC = gcc
-FLAGS = -Wall -Wextra -Werror 
+FLAGS = -Wall -Wextra -Werror -I $(INCLUDE) 
+RM = rm -f
+AR = ar rcs
+INCLUDE = libft.h
 
 SRCS =	ft_isalpha.c ft_isalnum.c ft_isdigit.c ft_isprint.c ft_isascii.c \
 		ft_strlen.c ft_memset.c ft_bzero.c ft_memcpy.c ft_memmove.c \
@@ -23,32 +26,31 @@ SRCS =	ft_isalpha.c ft_isalnum.c ft_isdigit.c ft_isprint.c ft_isascii.c \
 		ft_strjoin.c ft_strtrim.c ft_split.c ft_itoa.c ft_strmapi.c \
 		ft_striteri.c ft_putchar_fd.c ft_putstr_fd.c ft_putendl_fd.c \
 		ft_putnbr_fd.c
- 
-SRCSB =	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
+
+SRCSBONUS =	ft_lstnew_bonus.c ft_lstadd_front_bonus.c ft_lstsize_bonus.c \
 		ft_lstlast_bonus.c ft_lstadd_back_bonus.c ft_lstdelone_bonus.c \
 		ft_lstclear_bonus.c ft_lstiter_bonus.c ft_lstmap_bonus.c
 
 OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRCSBONUS:.c=.o)
 
-OBJSB = $(SRCSB:.c=.o)
-
-LIB = ar -rcs
-
-INCLUDE = libft.h
+%.o:%.c
+	$(CC) $(FLAGS) -c $< -o $@
 
 all: $(NAME)
 
+$(NAME): $(OBJS)
+	@$(AR) $(NAME) $(OBJS)
+
+bonus: $(OBJS_BONUS) $(OBJS)
+	@$(AR) $(NAME) $(OBJS_BONUS) $(OBJS)
+
 clean:
-	rm -f *.o
+	@$(RM) $(OBJS_BONUS) $(OBJS)
+
 fclean: clean
-	rm -f $(NAME)
+	@$(RM) $(NAME)
 
-re: fclean all
+re: fclean all bonus 
 
-bonus: $(OBJSB) $(INCLUDE)
-	$(LIB) $(NAME) $(OBJSB)
-
-$(NAME):	$(OBJS)
-	$(LIB) $(NAME) $(OBJS)
-
-.PHONY: all clean fclean re
+.PHONY: re all bonus clean fclean

@@ -6,57 +6,60 @@
 /*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/23 11:42:48 by lortega-          #+#    #+#             */
-/*   Updated: 2023/03/27 19:54:32 by lortega-         ###   ########.fr       */
+/*   Updated: 2023/04/06 13:06:43 by lortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_diglen(int n)
+static int	ft_abs(int nbr)
 {
-	int	x;
+	if (nbr < 0)
+		return (-nbr);
+	else
+		return (nbr);
+}
 
-	x = 0;
-	if (n <= 0)
+static int	ft_digits(int nbr)
+{
+	int	digits;
+
+	if (nbr <= 0)
+		digits = 1;
+	else
+		digits = 0;
+	while (nbr != 0)
 	{
-		x++;
-		n = n * -1;
+		nbr = nbr / 10;
+		digits++;
 	}
-	while (n > 0)
-	{
-		n = n / 10;
-		x++;
-	}
-	return (x);
+	return (digits);
 }
 
 char	*ft_itoa(int n)
 {
-	char	*r;
-	int		y;
-	long	nn;
+	int		len;
+	int		sign;
+	char	*str;
 
-	nn = n;
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	y = ft_diglen(n);
-	r = malloc(sizeof(char) * (ft_diglen(n) + 1));
-	if (!r)
-		return (0);
-	while (0 <= y)
-	{
-		if (nn < 0)
-			nn *= -1;
-		else
-		{
-			r[--y] = (nn % 10) + 48;
-			nn = nn / 10;
-		}
-	}
-	r[ft_diglen(n)] = '\0';
 	if (n < 0)
-		r[0] = 45;
-	return (r);
+		sign = -1;
+	else
+		sign = 1;
+	len = ft_digits(n);
+	str = (char *)malloc(sizeof(char) * len + 1);
+	if (!str)
+		return (NULL);
+	str[len--] = '\0';
+	while (len >= 0)
+	{
+		str[len] = '0' + ft_abs(n % 10);
+		n = ft_abs(n / 10);
+		len--;
+	}
+	if (sign == -1)
+		str[0] = '-';
+	return (str);
 }
 /*
 #include <stdio.h>
@@ -66,7 +69,5 @@ int main (void)
 	int	a;
 
 	a = 123456;
-//	itoa(a);
-//	printf("|%zu|", ft_diglen(a));
 	printf("|%s|\n", ft_itoa(a));
 }*/

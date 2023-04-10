@@ -6,107 +6,74 @@
 /*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 09:58:28 by lortega-          #+#    #+#             */
-/*   Updated: 2023/03/30 13:29:53 by lortega-         ###   ########.fr       */
+/*   Updated: 2023/04/06 13:06:57 by lortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*first(char *str, char space)
+static int	count_words(char const *s, char c)
 {
-	int		x;
-	char	*result;
-	char	*result1;
-
-	x = 0;
-	result = ft_strtrim(str, &space);
-	while ((result[x] != space) && (result[x] != '\0'))
-		x++;
-	result1 = ft_substr(result, 0, x);
-	free(result);
-	return (result1);
-}
-
-static char	*next(char *str, char space)
-{
-	int		x;
-	char	*result;
-	char	*p;
-	char	*result3;
-
-	x = 0;
-	result = ft_strtrim(str, &space);
-	while (result[x] != space && result[x] != '\0')
-		x++;
-	p = result;
-	result = ft_substr(result, x, ft_strlen(result));
-	free(p);
-	result3 = ft_strtrim(result, &space);
-	free(result);
-	free(str);
-	return (result3);
-}
-
-static int	cont_w(char *str, char space)
-{
-	int	c;
-	int	wd;
-
-	c = 0;
-	wd = 0;
-	while (str[c] != '\0')
-	{
-		if (str[c] == space)
-			c++;
-		else if (str[c] != space)
-		{
-			wd++;
-			while (str[c] != space && str[c] != '\0')
-				c++;
-		}
-	}
-	return (wd);
-}
-
-static void	ft_segurity(char **array, int x, char *temp)
-{
+	int	count;
 	int	i;
 
+	count = 0;
 	i = 0;
-	while (i < x)
+	while (s[i] != '\0')
 	{
-		free(array[i]);
-		i++;
+		while (s[i] == c)
+			i++;
+		if (s[i] != '\0')
+			count++;
+		while (s[i] != '\0' && s[i] != c)
+			i++;
 	}
-	free(array);
+	return (count);
+}
+
+static char	*next_word(char const **s, char c)
+{
+	char	*start;
+	char	*end;
+	char	*word;
+
+	while (**s && **s == c)
+		(*s)++;
+	start = (char *)*s;
+	while (**s && **s != c)
+		(*s)++;
+	end = (char *)*s;
+	word = ft_substr(start, 0, end - start);
+	return (word);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		wd;
-	char	**array;
-	int		x;
-	char	*temp;
+	int		word_count;
+	char	**words;
+	int		i;
 
 	if (!s)
 		return (NULL);
-	wd = cont_w((char *)s, c);
-	array = ft_calloc((wd + 1), (sizeof(char *)));
-	if (!array)
+	word_count = count_words(s, c);
+	words = (char **)malloc(sizeof(char *) * (word_count + 1));
+	if (!words)
 		return (NULL);
-	s = ft_strdup(s);
-	x = -1;
-	while (++x < wd)
+	i = 0;
+	while (i < word_count)
 	{
-		temp = first((char *)s, c);
-		s = next((char *)s, c);
-		array[x] = ft_strdup(temp);
-		if (!array[x])
-			ft_segurity(array, x, temp);
-		free(temp);
+		words[i] = next_word(&s, c);
+		if (!words[i])
+		{
+			while (i-- > 0)
+				free(words[i]);
+			free(words);
+			return (NULL);
+		}
+		i++;
 	}
-	free((void *)s);
-	return (array);
+	words[i] = NULL;
+	return (words);
 }
 /*
 #include <stdio.h>
@@ -118,7 +85,7 @@ int main (void)
 	char	p; 
 	int	x = 0;	
 	char **r = ft_split("hhello!", ' ');
-	p = cont_w(a, c);	
+	p = count_words(a, c);	
 	while (r[x])
 	{	
 		printf("%s\n%p\n", r[x], r[x]);

@@ -6,7 +6,7 @@
 /*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 16:47:14 by lortega-          #+#    #+#             */
-/*   Updated: 2023/03/13 14:00:50 by lortega-         ###   ########.fr       */
+/*   Updated: 2023/04/06 09:59:53 by lortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	int		x;
 	int		y;
 
 	y = ft_strlen(s);

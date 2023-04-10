@@ -29,8 +29,8 @@ char	*ft_strchr(const char *s, int c)
 	}
 	return (NULL);
 }
-/*
-#include <stdio.h>
+
+/* #include <stdio.h>
 #include <string.h>
 
 int main(void)
@@ -39,4 +39,5 @@ int main(void)
 	int		c = 110;
 	printf("%s\n", ft_strchr(frase1, c));
 	printf("%s\n", strchr(frase1, c));
-}*/
+}
+ */

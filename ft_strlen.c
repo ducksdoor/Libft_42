@@ -6,7 +6,7 @@
 /*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:58:13 by lortega-          #+#    #+#             */
-/*   Updated: 2023/03/09 13:01:17 by lortega-         ###   ########.fr       */
+/*   Updated: 2023/04/06 13:12:06 by lortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,10 @@ size_t	ft_strlen(const char *s)
 }
 /*
 #include <stdio.h>
-
+#include <string.h>
 int main(void)
 {
-	char	x[] ="holapirindola";
+	char	*x = NULL;
+//	printf("%zu", strlen(NULL));
 	printf("%zu", ft_strlen(x));
 }*/

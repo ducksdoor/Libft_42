@@ -6,7 +6,7 @@
 /*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/08 18:14:04 by lortega-          #+#    #+#             */
-/*   Updated: 2023/03/14 13:59:53 by lortega-         ###   ########.fr       */
+/*   Updated: 2023/04/07 16:46:32 by lortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
 	size_t				i;
 	unsigned char		*x;
-	unsigned const char	*z;
+	unsigned char		*z;
 
 	x = (unsigned char *)dst;
 	z = (unsigned char *)src;
@@ -32,9 +32,10 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 }
 /*
 #include <stdio.h>
-
+#include <string.h>
 int main(void)
 {
 	printf("%s", ft_memcpy("cocoroto", "motorola", 2));
+	printf("%s", memcpy("cocoroto", "motorola", 2));
 	return (0);
 }*/

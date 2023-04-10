@@ -6,7 +6,7 @@
 /*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/14 16:19:17 by lortega-          #+#    #+#             */
-/*   Updated: 2023/03/16 09:10:34 by lortega-         ###   ########.fr       */
+/*   Updated: 2023/04/06 13:28:19 by lortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,13 @@ char	*ft_strdup(const char *src)
 }
 /*
 #include <stdio.h>
+#include <string.h>
 int main(void)
 {
-	char	pepito[]="pasa_mucho_tiempo_en_42";
-
-//	ft_strdup(pepito);
-	printf("%s", ft_strdup("pasa mucho tiempo en 42"));
+	char	*pepito= "caramelodementa";
+	char	*pepito2="caramelodementa";
+	
+	printf("%s", ft_strdup(pepito));
+	printf("%s", strdup(pepito2));
 }
 */
