@@ -12,84 +12,74 @@
 
 #include "libft.h"
 
-static int	count_words(char const *s, char c)
+static int	ft_word_count(char const *str, char c)
 {
-	int	count;
 	int	i;
+	int	j;
 
-	count = 0;
 	i = 0;
-	while (s[i] != '\0')
+	j = 0;
+	while (str[i] != '\0')
 	{
-		while (s[i] == c)
-			i++;
-		if (s[i] != '\0')
-			count++;
-		while (s[i] != '\0' && s[i] != c)
+		if (str[i] != c)
+		{
+			j++;
+			while ((str[i] != '\0') && str[i] != c)
+				i++;
+		}
+		else
 			i++;
 	}
-	return (count);
+	return (j);
 }
 
-static char	*next_word(char const **s, char c)
+static int	ft_word_len(char const *str, char c, int index)
 {
-	char	*start;
-	char	*end;
-	char	*word;
+	int	i;
 
-	while (**s && **s == c)
-		(*s)++;
-	start = (char *)*s;
-	while (**s && **s != c)
-		(*s)++;
-	end = (char *)*s;
-	word = ft_substr(start, 0, end - start);
-	return (word);
+	i = 0;
+	while (str[index + i] != c && str[index + i] != '\0')
+		i++;
+	return (i);
+}
+
+static char	**ft_free_split(char **split, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		free(split[i]);
+		i++;
+	}
+	free(split);
+	return (0);
 }
 
 char	**ft_split(char const *s, char c)
 {
-	int		word_count;
-	char	**words;
+	char	**split;
 	int		i;
+	int		j;
 
-	if (!s)
-		return (NULL);
-	word_count = count_words(s, c);
-	words = (char **)malloc(sizeof(char *) * (word_count + 1));
-	if (!words)
-		return (NULL);
+	j = 0;
 	i = 0;
-	while (i < word_count)
+	if (!s)
+		return (0);
+	split = (char **)malloc (sizeof(char *) * (ft_word_count(s, c) + 1));
+	if (!(split))
+		return (0);
+	while (j < ft_word_count(s, c))
 	{
-		words[i] = next_word(&s, c);
-		if (!words[i])
-		{
-			while (i-- > 0)
-				free(words[i]);
-			free(words);
-			return (NULL);
-		}
-		i++;
+		while (s[i] == c)
+			i++;
+		split[j] = ft_substr(s, i, ft_word_len(s, c, i));
+		if (!(split[j]))
+			return (ft_free_split(split, j));
+		j++;
+		i += ft_word_len(s, c, i);
 	}
-	words[i] = NULL;
-	return (words);
+	split[j] = 0;
+	return (split);
 }
-/*
-#include <stdio.h>
-
-int main (void)
-{
-	char *a = "  esto  me da dolor de cabeza ... huhuh "; 
-	char c = ' ';
-	char	p; 
-	int	x = 0;	
-	char **r = ft_split("hhello!", ' ');
-	p = count_words(a, c);	
-	while (r[x])
-	{	
-		printf("%s\n%p\n", r[x], r[x]);
-		x++;
-	}
-		printf("%s\n%p\n", r[x], r[x]);
-}*/

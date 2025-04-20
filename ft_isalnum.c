@@ -17,18 +17,10 @@ int	ft_isalnum(int b)
 	if (ft_isalpha(b) == 1)
 		return (1);
 	else
-	{	
+	{
 		if (ft_isdigit(b) == 1)
 			return (1);
 		else
 			return (0);
 	}
 }
-/*
-#include <stdio.h>
-
-int main (void)
-{
-	printf("%d",ft_isalnum(144));
-}
-*/

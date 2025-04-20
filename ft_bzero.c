@@ -25,13 +25,3 @@ void	ft_bzero(void *s, unsigned int n)
 		++x;
 	}
 }
-/*
-#include <stdio.h>
-
-int main(void)
-{
-	char	src[] = "3456778900";
-	ft_bzero(src, 3);
-	printf("%s", src);
-	return (0);
-}*/

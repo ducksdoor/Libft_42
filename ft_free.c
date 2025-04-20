@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: lortega- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/28 19:58:38 by lortega-          #+#    #+#             */
-/*   Updated: 2023/03/30 13:10:51 by lortega-         ###   ########.fr       */
+/*   Created: 2025/04/17 15:26:17 by lortega-          #+#    #+#             */
+/*   Updated: 2025/04/17 15:26:21 by lortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_free(char **lst)
 {
-	t_list	*temp;
-	t_list	*more;
+	int	i;
 
-	if (!lst || !del)
-		return ;
-	temp = *lst;
-	while (temp)
-	{
-		more = temp->next;
-		del (temp->content);
-		free(temp);
-		temp = more;
-	}
-	free(temp);
-	*lst = NULL;
+	i = 0;
+	while (lst[i])
+		free(lst[i++]);
+	free(lst);
 }

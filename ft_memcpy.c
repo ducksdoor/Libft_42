@@ -30,12 +30,3 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	}
 	return (dst);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int main(void)
-{
-	printf("%s", ft_memcpy("cocoroto", "motorola", 2));
-	printf("%s", memcpy("cocoroto", "motorola", 2));
-	return (0);
-}*/

@@ -31,15 +31,3 @@ char	*ft_strdup(const char *src)
 	des[y] = '\0';
 	return (des);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int main(void)
-{
-	char	*pepito= "caramelodementa";
-	char	*pepito2="caramelodementa";
-	
-	printf("%s", ft_strdup(pepito));
-	printf("%s", strdup(pepito2));
-}
-*/

@@ -30,17 +30,3 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	}
 	return (len);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int main(void)
-{
-	char	dest[] = "pocacosa";
-	char	src[] = "muchascosas";
-	int	size  = 5;
-	printf("%zu\n",ft_strlcpy(dest, src, size));
-	printf("%s \n", dest);
-
-
-	printf("%lu", strlcpy(dest, src, size));
-}*/

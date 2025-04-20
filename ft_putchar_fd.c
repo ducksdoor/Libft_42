@@ -16,9 +16,3 @@ void	ft_putchar_fd(char s, int fd)
 {
 	write(fd, &s, 1);
 }
-/*
-
-int main (void)
-{
-	ft_putchar_fd('a', 1);
-}*/

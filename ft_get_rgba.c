@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_get_rgba.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: lortega- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/07 18:28:22 by lortega-          #+#    #+#             */
-/*   Updated: 2023/03/08 19:44:18 by lortega-         ###   ########.fr       */
+/*   Created: 2025/04/20 19:38:50 by lortega-          #+#    #+#             */
+/*   Updated: 2025/04/20 19:38:52 by lortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isascii(int b)
+int	ft_get_rgba(int r, int g, int b, int a)
 {
-	if (b >= 0 && b <= 127)
-		return (1);
-	else
-		return (0);
+	return (r << 24 | g << 16 | b << 8 | a);
 }

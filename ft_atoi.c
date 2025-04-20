@@ -34,12 +34,3 @@ int	ft_atoi(const char *str)
 	}
 	return (res * sign);
 }
-/*
-
-#include <stdio.h>
-
-int main (void)
-{
-	printf("%d\n",ft_atoi(" -3445rrg33"));
-	printf("%d\n",atoi(" -3445rrg33"));
-}*/

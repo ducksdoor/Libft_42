@@ -61,13 +61,3 @@ char	*ft_itoa(int n)
 		str[0] = '-';
 	return (str);
 }
-/*
-#include <stdio.h>
-
-int main (void)
-{
-	int	a;
-
-	a = 123456;
-	printf("|%s|\n", ft_itoa(a));
-}*/

@@ -33,17 +33,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (0);
 	while ((start < ft_strlen(s)) && (x < len))
 	{
-			dst[x] = s[start];
-			start++;
-			x++;
+		dst[x] = s[start];
+		start++;
+		x++;
 	}
 	dst[x] = '\0';
 	return (dst);
 }
-/*
-#include <stdio.h>
-
-int main(void)
-{
-	printf("%s", ft_substr("patata", 2, 2));
-}*/

@@ -27,14 +27,3 @@ char	*ft_strrchr(const char *s, int c)
 	}
 	return (NULL);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	char	frase1[] = "eres un autentico calamar";
-	int		c = 110;
-	printf("%s\n", ft_strrchr(frase1, c));
-	printf("%s\n", strrchr(frase1, c));
-}*/

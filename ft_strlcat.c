@@ -32,16 +32,3 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	dst[x] = '\0';
 	return (ft_strlen(dst) + ft_strlen(&src[y]));
 }
-/*
-#include <stdio.h>
-#include <string.h>
-int main (void)
-{
-	char	dest[100] = "muchaspatatas";
-	char	src[100] = "caliente";
-	int		size = 7;
-
-	printf("%zu\n", ft_strlcat(dest, src, size));
-	printf("%lu\n", strlcat(dest, src, size));
-}
-*/

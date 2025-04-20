@@ -38,13 +38,3 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	}
 	return (x);
 }
-
-/*
-#include <stdio.h>
-int	main(void)
-{
-	char s1[100] = "hola";
-	char s2[100] = "caracola";
-	printf("%s\n", ft_memmove(s2, s1, 3));
-}
-*/

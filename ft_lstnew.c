@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -23,11 +23,3 @@ t_list	*ft_lstnew(void *content)
 	head->next = NULL;
 	return (head);
 }
-/*
-#include <stdio.h>
-int main(void)
-{
-	t_list *ptr;
-	ptr = ft_lstnew("hola");
-	printf("%s", ptr->content);
-}*/

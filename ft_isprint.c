@@ -19,10 +19,3 @@ int	ft_isprint(int c)
 	else
 		return (0);
 }
-/*
-#include <stdio.h>
-
-int main (void)
-{
-	printf("%d", ft_isprint(150));
-}*/

@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstiter_bonus.c                                 :+:      :+:    :+:   */
+/*   ft_compare_char.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
+/*   By: lortega- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 09:55:41 by lortega-          #+#    #+#             */
-/*   Updated: 2023/03/30 13:11:30 by lortega-         ###   ########.fr       */
+/*   Created: 2025/04/19 13:16:07 by lortega-          #+#    #+#             */
+/*   Updated: 2025/04/19 13:16:10 by lortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstiter(t_list *lst, void (*f)(void *))
+int	ft_compare_char(char object, char *try)
 {
-	while (lst)
+	int	x;
+
+	x = 0;
+	while (try[x])
 	{
-		f(lst->content);
-		lst = lst->next;
+		if (object == try[x])
+			return (1);
+		x++;
 	}
+	return (-1);
 }

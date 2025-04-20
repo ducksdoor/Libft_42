@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/10 15:10:31 by lortega-          #+#    #+#             */
-/*   Updated: 2023/03/16 13:22:08 by lortega-         ###   ########.fr       */
+/*   Created: 2023/03/29 09:55:41 by lortega-          #+#    #+#             */
+/*   Updated: 2023/03/30 13:11:30 by lortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *s1, const char *s2, size_t n)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	size_t	x;
-	int		dif;
-
-	x = 0;
-	dif = 0;
-	while ((x < n) && !dif && (s1[x] != '\0') && (s2[x] != '\0'))
+	while (lst)
 	{
-		dif = (unsigned char)s1[x] - (unsigned char)s2[x];
-		x++;
+		f(lst->content);
+		lst = lst->next;
 	}
-	if (x < n && !dif && (s1[x] == '\0' || s2 [x] == '\0'))
-		dif = (unsigned char)s1[x] - (unsigned char)s2[x];
-	return (dif);
 }

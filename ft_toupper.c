@@ -18,12 +18,3 @@ int	ft_toupper(int c)
 		c = c -32;
 	return (c);
 }
-/*
-#include <stdio.h>
-
-int main(void)
-{
-	char a;
-	a = 'a';
-	printf("%c", (char)ft_toupper(a));
-}*/

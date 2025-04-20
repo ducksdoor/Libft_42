@@ -30,10 +30,3 @@ void	ft_putnbr_fd(int n, int fd)
 	else
 		ft_putchar_fd(n + '0', fd);
 }
-/*
-#include <stdio.h>
-
-int main (void)
-{
-	printf("%zu", ft_putnbr_fd(-5, 2));
-}*/

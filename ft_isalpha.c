@@ -19,13 +19,3 @@ int	ft_isalpha(int c)
 	else
 		return (0);
 }
-/*
-#include <stdio.h>
-#include <ctype.h>
-
-int main(void)
-{
-	int fifo = 66;
-	int fifa = 62;
-	printf("%d", ft_isapha(fifa));
-}*/

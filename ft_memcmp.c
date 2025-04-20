@@ -29,12 +29,3 @@ int	ft_memcmp(const void *ptr1, const void *ptr2, size_t n)
 	}
 	return (0);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	printf("%d\n", ft_memcmp("abcdef", "8abcxx", 5));
-	printf("%d\n", memcmp("abcdef", "8abcxx", 5));
-}*/

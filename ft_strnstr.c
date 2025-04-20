@@ -36,12 +36,3 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	}
 	return (NULL);
 }
-/*
-#include <stdio.h>
-#include <string.h>
-
-int main(void)
-{
-	printf("%s\n", ft_strnstr("paelella", "ell", 20));
-	printf("%s\n", strnstr("paelella", "ell", 19));
-}*/

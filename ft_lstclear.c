@@ -1,38 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lortega- <lortega-@student.42madrid.com>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/29 12:06:25 by lortega-          #+#    #+#             */
-/*   Updated: 2023/03/30 13:21:54 by lortega-         ###   ########.fr       */
+/*   Created: 2023/03/28 19:58:38 by lortega-          #+#    #+#             */
+/*   Updated: 2023/03/30 13:10:51 by lortega-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
 	t_list	*temp;
-	t_list	*r;
-	void	*rr;
+	t_list	*more;
 
-	if (!lst || !f || !del)
-		return (NULL);
-	r = NULL;
-	while (lst)
+	if (!lst || !del)
+		return ;
+	temp = *lst;
+	while (temp)
 	{
-		rr = f(lst->content);
-		temp = ft_lstnew(rr);
-		if (!temp)
-		{
-			ft_lstclear(&r, del);
-			del(rr);
-			return (NULL);
-		}
-		ft_lstadd_back(&r, temp);
-		lst = lst->next;
+		more = temp->next;
+		del (temp->content);
+		free(temp);
+		temp = more;
 	}
-	return (r);
+	free(temp);
+	*lst = NULL;
 }

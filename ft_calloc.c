@@ -24,12 +24,3 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_bzero (des, count * size);
 	return (des);
 }
-/*
-#include <stdio.h>
-#include <stdlib.h>
-
-int main (void)
-{
-	printf("%p\n", ft_calloc(2, 2));
-	printf("%p\n", calloc(2, 2));
-}*/
